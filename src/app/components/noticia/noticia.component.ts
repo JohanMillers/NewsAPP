@@ -10,6 +10,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 })
 export class NoticiaComponent implements OnInit {
   @Input() noticia:any = {};
+  @Input() indice: number;
   constructor(private iab: InAppBrowser) { }
 
   ngOnInit() {}
