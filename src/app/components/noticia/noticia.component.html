@@ -1,8 +1,8 @@
 <ion-card color="dark">
-  <img *ngIf="noticia.urlToImage" src="{{noticia.urlToImage}}"/>
+  <img (click)="abrirNews()" *ngIf="noticia.urlToImage" src="{{noticia.urlToImage}}"/>
   <ion-card-header>
     <ion-card-subtitle>{{noticia.source.name}}</ion-card-subtitle>
-    <ion-card-title>{{noticia.title}}</ion-card-title>
+    <ion-card-title (click)="abrirNews()">{{noticia.title}}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     {{noticia.description}}

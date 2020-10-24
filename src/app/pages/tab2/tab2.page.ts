@@ -1,6 +1,6 @@
 import { Article } from './../../../Inteface/Interfaces';
 import { NewsServicesService } from './../../Services/news-services.service';
-import { IonSegment } from '@ionic/angular';
+import { IonSegment, IonInfiniteScroll } from '@ionic/angular';
 import { Component, ViewChild, OnInit } from '@angular/core';
 
 @Component({
@@ -10,18 +10,20 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 })
 export class Tab2Page implements OnInit {
   @ViewChild( IonSegment ) Segment:IonSegment;
+  @ViewChild(IonInfiniteScroll) infinite:IonInfiniteScroll;
 
   categorias = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
   category:any = [];
   Noticias: Article[] = [];
 
+
   constructor(private NewsServices: NewsServicesService) {}
 
   
-  ngOnInit(): void {
-    this.category = this.categorias[2];
+  ngOnInit() {
+    this.category = this.categorias[0];
 
-    this.cargarNoticias(this.categorias[2])
+    this.cargarNoticias(this.categorias[0])
     
   }
   //Funcion que esta pentiente del cambio de Segment
@@ -33,16 +35,24 @@ export class Tab2Page implements OnInit {
   //Funcion que esta pentiente del cambio de Segment
   
   //Funcion que cargar las noticias
-  cargarNoticias(categoria: string){
+  cargarNoticias(categoria: string, event?){
     this.NewsServices.getNewsforCategory(categoria).subscribe(resp =>{
       console.log(resp);
       console.log(categoria)
       this.Noticias.push(...resp.articles);
+
+      if (event) {
+        this.infinite.complete();
+      }
+
+      
     })
   }
   //Funcion que cargar las noticias
 
-  
+  loadData(event ) {
+    this.cargarNoticias(this.categorias[0], event)
+  }
 
  
 
