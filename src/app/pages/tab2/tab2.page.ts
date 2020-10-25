@@ -1,14 +1,14 @@
 import { Article } from './../../../Inteface/Interfaces';
 import { NewsServicesService } from './../../Services/news-services.service';
 import { IonSegment, IonInfiniteScroll } from '@ionic/angular';
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class Tab2Page implements OnInit, AfterViewInit {
   @ViewChild( IonSegment ) Segment:IonSegment;
   @ViewChild(IonInfiniteScroll) infinite:IonInfiniteScroll;
 
@@ -19,10 +19,13 @@ export class Tab2Page implements OnInit {
 
   constructor(private NewsServices: NewsServicesService) {}
 
+
+  ngAfterViewInit(): void {
+   this.Segment.value = this.categorias[0];
+  }
+
   
   ngOnInit() {
-    this.category = this.categorias[0];
-
     this.cargarNoticias(this.categorias[0])
     
   }
@@ -51,7 +54,7 @@ export class Tab2Page implements OnInit {
   //Funcion que cargar las noticias
 
   loadData(event ) {
-    this.cargarNoticias(this.categorias[0], event)
+    this.cargarNoticias(this.Segment.value, event)
   }
 
  
