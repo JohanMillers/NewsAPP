@@ -1,3 +1,4 @@
+import { DataLocalService } from './../../Services/data-local.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(public dataLocal: DataLocalService) {
+  
+
+
+  }
 
 }

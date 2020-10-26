@@ -1,3 +1,4 @@
+import { DataLocalService } from './../../Services/data-local.service';
 import { Article, Source } from './../../../Inteface/Interfaces';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -15,7 +16,8 @@ export class NoticiaComponent implements OnInit {
   @Input() indice: number;
   constructor(private iab: InAppBrowser,
               private socialSharing: SocialSharing,
-              public actionSheetCtr: ActionSheetController) { }
+              public actionSheetCtr: ActionSheetController,
+              private datalocal: DataLocalService) { }
 
   ngOnInit() {}
 
@@ -46,6 +48,7 @@ export class NoticiaComponent implements OnInit {
         icon: 'star',
         handler: () => {
           console.log('Favorite clicked');
+          this.datalocal.guardarNoticias(this.noticia)
         }
       }, {
         text: 'Cancelar',
