@@ -17,6 +17,7 @@
 
 
 
-  <app-noticias *ngIf="dataLocal.noticias.length > 0" 
-           [Noticias]="dataLocal.noticias"></app-noticias>
+  <app-noticias *ngIf="dataLocal.noticias.length > 0"
+                [enFavorito]="true" 
+                [Noticias]="dataLocal.noticias"></app-noticias>
 </ion-content>

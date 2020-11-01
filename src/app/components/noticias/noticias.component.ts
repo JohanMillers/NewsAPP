@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NoticiasComponent implements OnInit {
 @Input() Noticias: Article[] = [];
+@Input() enFavorito = false;
 
   constructor() { }
 

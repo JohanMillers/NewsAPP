@@ -14,6 +14,8 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 export class NoticiaComponent implements OnInit {
   @Input() noticia:any = [];
   @Input() indice: number;
+  @Input() enFavorito;
+
   constructor(private iab: InAppBrowser,
               private socialSharing: SocialSharing,
               public actionSheetCtr: ActionSheetController,
@@ -28,6 +30,31 @@ export class NoticiaComponent implements OnInit {
   }
 
   async lanzarMenu(){
+
+    let guardarBorrarBtn;
+
+    if (this.enFavorito) {
+      guardarBorrarBtn = {
+        text: 'Borrar',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete favorite');
+          this.datalocal.borrarNoticias(this.noticia)
+        }
+      }
+    }else {
+      guardarBorrarBtn = {
+        text: 'Favorito',
+        icon: 'star',
+        handler: () => {
+          console.log('Favorite clicked');
+          this.datalocal.guardarNoticias(this.noticia)
+        }
+      }
+    }
+
+
+
     const actionSheet = await this.actionSheetCtr.create({
     
       buttons: [{
@@ -43,14 +70,8 @@ export class NoticiaComponent implements OnInit {
           );
         }
       }, 
-      {
-        text: 'Favorito',
-        icon: 'star',
-        handler: () => {
-          console.log('Favorite clicked');
-          this.datalocal.guardarNoticias(this.noticia)
-        }
-      }, {
+      guardarBorrarBtn,
+       {
         text: 'Cancelar',
         icon: 'close',
         role: 'cancel',
