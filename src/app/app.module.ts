@@ -15,6 +15,10 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [AppComponent],
