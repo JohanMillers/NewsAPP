@@ -16,6 +16,14 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
