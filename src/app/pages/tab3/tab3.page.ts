@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  sliderOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  }
 
   constructor(public dataLocal: DataLocalService) {
   
