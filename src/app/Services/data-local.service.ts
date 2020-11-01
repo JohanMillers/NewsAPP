@@ -1,33 +1,34 @@
 import { Article } from './../../Inteface/Interfaces';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { __await } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataLocalService {
+
   noticias: Article[] = [];
 
   constructor(private storage: Storage) { 
 
-    this.cargarFavorito();
+    // this.cargarFavorito();
   }
 
   guardarNoticias( noticia:Article ){
 
     const existe = this.noticias.find(noti => noti.title === noticia.title);
-    if(!existe) {
+
+    if (!existe) {
       this.noticias.unshift(noticia);
-      this.storage.set('favoritos',this.noticias);
+    this.storage.set('favorite', this.noticias);
+
     }
-
   }
 
-   async cargarFavorito(){
+  //  async cargarFavorito(){
     
-    const favoritos = await this.storage.get('favoritos');
+  //   const favoritos = await this.storage.get('favoritos');
 
-    this.noticias = favoritos;
-  }
+  //   this.noticias = favoritos;
+  // }
 }

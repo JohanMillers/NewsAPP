@@ -12,7 +12,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
   styleUrls: ['./noticia.component.scss'],
 })
 export class NoticiaComponent implements OnInit {
-  @Input() noticia:any = {};
+  @Input() noticia:any = [];
   @Input() indice: number;
   constructor(private iab: InAppBrowser,
               private socialSharing: SocialSharing,
